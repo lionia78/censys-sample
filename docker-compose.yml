@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  kv-service:
+    build:
+      context: .
+      dockerfile: docker/grpc-kv-service.Dockerfile
+    container_name: kv-service
+    ports:
+      - "50051:50051"
+
+#  rest-service:
+#    build:
+#      context: .
+#      dockerfile: docker/rest-service.Dockerfile
+#    container_name: rest-service
+#    environment:
+#      - KV_SERVICE_ADDR=kv-service:50051
+#    ports:
+#      - "8080:8080"
+#    depends_on:
+#      - kv-service
