@@ -7,12 +7,25 @@ This repository contains a simple decomposed Key-Value store implemented as two 
 The services communicate over gRPC. The REST service forwards requests to the gRPC service.
 
 ## Features
-- Store a value at a given key (POST /kv).
-- Retrieve the value for a given key (GET /kv/:key).
-- Delete a given key (DELETE /kv/:key).
-- In-memory storage (using a Go map for simplicity; supports concurrent access and extensible to other backends).
-- Built as two separate Docker containers.
-- gRPC for inter-service communication.
+- **REST API Endpoints**:
+   - `POST /kv`: Store a key-value pair (e.g., `{"key": "foo", "value": "bar"}`).
+   - `GET /kv/:key`: Retrieve a value by key.
+   - `DELETE /kv/:key`: Delete a key.
+- **gRPC Service**: Handles Put, Get, and Delete operations with typed values.
+- **Modular Design**: Clean separation of concerns for scalability and maintenance.
+- **Dockerized**: Services run in separate containers with Docker Compose orchestration.
+- **Extensible**: Easy to add new value types or swap storage backends.
+
+## Project Structure
+The project follows a clean, modular architecture that separates concerns between service entry points, business logic, communication layers, and deployment configuration. It is designed for clarity, scalability, and easy maintenance, allowing independent development and testing of each service.
+
+### Layer Overview
+- **cmd/**: Contains entry points for each service (`kv-service` and `rest-service`).
+- **internal/app/**: Houses application logic. Each subdirectory (`kv-service`, `rest-service`) represents an independent service with its own server, handler, and logic layers.
+- **proto/**: Defines and generates gRPC communication code between services.
+- **docker/**: Provides Dockerfiles for isolated builds of each service.
+- **docker-compose.yml**: Simplifies local orchestration of both services.
+- **pkg/**: Reserved for utility or shared packages (currently empty).
 
 ## Prerequisites
 - Docker
