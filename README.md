@@ -1,8 +1,8 @@
 # Simple Decomposed Key-Value Store
 
 This repository contains a simple decomposed Key-Value store implemented as two services:
-- **REST Service**: A JSON REST API that serves as the public interface (using Go and gorilla/mux).
-- **gRPC Service**: A backend Key-Value store service (using Go and gRPC) that handles storage operations in-memory.
+- **gRPC Service**: kv-service - a backend Key-Value store service (using Go and gRPC) that handles storage operations in-memory.
+- **REST Service**: rest-service - a JSON REST API that serves as the public interface (using Go and gorilla/mux).
 
 The services communicate over gRPC. The REST service forwards requests to the gRPC service.
 
@@ -43,14 +43,14 @@ Expected: HTTP Code 204 (No Content)
 2. **Get a value**:
 
 ```sh
-curl -X GET http://localhost:8080/kv/foo
+  curl -X GET http://localhost:8080/kv/foo
 ```
 Expected: `{"value": "bar"}`
 
 3. **Delete a key**:
 
 ```sh
-curl -X DELETE http://localhost:8080/kv/foo
+  curl -X DELETE http://localhost:8080/kv/foo
 ```
 
 Expected: HTTP Code 204 (No Content)
