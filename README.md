@@ -68,7 +68,7 @@ Expected: `{"value": "bar"}`
 
 Expected: HTTP Code 204 (No Content)
 
-4. Error cases:
+4. **Error cases**:
 - Invalid JSON in POST: 400 Bad Request.
 - Get/Delete non-existent key: 404 Not Found.
 
