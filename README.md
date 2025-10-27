@@ -79,7 +79,7 @@ No full test suite provided due to time constraints, but basic unit tests are in
 
 ## Extensibility Notes
 - **Add Functionality**: Extend `proto/kv.proto` with new RPCs (e.g., ListKeys), implement in gRPC server, and add endpoints in REST.
-- **Change Transport**: The gRPC client in REST is modular; replace with HTTP or other protocols by swapping the client logic in `rest-service/kv_client.go`.
+- **Change Transport**: The gRPC client in REST is designed to be modular, allowing the transport layer to be replaced with another protocol (such as HTTP) in the future if needed by swapping the client logic in `rest-service/kv_client.go`.
 - **Storage**: Currently in-memory map; replace `store` in `grpc-service/server.go` with Redis, DB, etc.
 - **Error Handling**: Centralized in both services; easy to add logging/monitoring.
 - **Data Types**: The current KVStore implementation supports only `string` keys and values for simplicity. In future versions, this can be extended to handle arbitrary data types (e.g., JSON objects, integers, or binary data) by updating the protobuf definitions and storage logic.
