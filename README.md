@@ -83,4 +83,5 @@ No full test suite provided due to time constraints, but basic unit tests are in
 - **Storage**: Currently in-memory map; replace `store` in `grpc-service/server.go` with Redis, DB, etc.
 - **Error Handling**: Centralized in both services; easy to add logging/monitoring.
 - **Data Types**: The current KVStore implementation supports only `string` keys and values for simplicity. In future versions, this can be extended to handle arbitrary data types (e.g., JSON objects, integers, or binary data) by updating the protobuf definitions and storage logic.
+- **Eviction Policies**: Supporting different eviction policies like LRU, TTL, etc.
 
